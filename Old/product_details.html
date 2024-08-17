@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Product Catalog</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<style>
+.quantity-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.quantity-section {
+  margin-bottom: 10px;
+}
+.quantity-section label {
+  position: relative;
+  margin-bottom: 0;
+}
+.quantity-section input {
+  position: relative;
+  
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+<button id="openNav" class="btn btn-light">☰</button>
+<img src="img/logo.png" alt="Logo" class="logo">
+</div>
+
+<!-- Navigation Flyout -->
+<div class="navigation-flyout">
+<span class="close-button" onclick="closeNav()">×</span>
+<!-- Profile Section -->
+<div class="profile-section">
+<img src="img/profile-picture.jpg" alt="Profile" class="profile-picture">
+<div class="profile-info">
+<div class="profile-name">Vinay Singh</div>
+<div class="profile-email">vinaysingh43@gmail.com</div>
+</div>
+</div>
+
+<a href="profile.html" class="navigation-item">Profile</a>
+<a href="menu-catalog.html" class="navigation-item">Categories</a>
+<a href="contact.html" class="navigation-item">Contact</a>
+<a href="product_details.html" class="navigation-item">Product Details</a>
+<a href="cart.html" class="navigation-item">View Cart</a>
+<a href="checkout.html" class="navigation-item">Checkout</a>
+<a href="login.html" class="navigation-item">Login</a>
+<a href="index.html" class="navigation-item">Register</a>
+<a href="#" class="navigation-item">Log out</a>
+<!-- Add more navigation items as needed -->
+</div>
+
+<!-- Product Catalog -->
+<div class="container">
+<div class="product-details">
+<img id="product-image" src="" alt="Product Details" class="product-img">
+<h2 id="product-title" class="product-title"></h2>
+
+<!-- Quantity and Price Section -->
+<div class="quantity-price-section text-center">
+<div class="quantity-section">
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity" class="form-control quantity-input" value="1" min="1">
+</div>
+
+<div class="price-section">
+<label for="Price" id="product-price"></label>
+</div>
+</div>
+
+<!-- Add to Cart Button -->
+<button class="btn btn-add-to-cart" onclick="addToCart()">Add to Cart</button>
+
+<p id="product-description" class="product-description"></p>
+
+<!------SPACER------->
+<div class="spacer">&nbsp;</div>
+<!------SPACER------->
+</div>
+
+</div>
+    
+<div class="footer">
+<a href="menu-catalog.html" class="footer-icon active"><i class="fas fa-store"></i></a>
+<a href="profile.html" class="footer-icon"><i class="far fa-user"></i> </a>
+<a href="cart.html" class="footer-icon"><i class="fas fa-shopping-basket"></i></a>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    function openNav() {
+            document.querySelector('.navigation-flyout').style.left = '0';
+}
+
+function closeNav() {
+  document.querySelector('.navigation-flyout').style.left = '-80%';
+}
+
+document.getElementById('openNav').addEventListener('click', openNav);
+    
+// JavaScript code for "Add to Cart" functionality
+function addToCart() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    const quantity = document.getElementById('quantity').value;
+
+    // Fetch product details from API
+    fetch(`https://digitalcreativeinternational.com/foodstore/get_product_details/${productId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const product = data[0];
+            const newItem = {
+                productId: product.product_id,
+                productName: product.product_name,
+                quantity: parseInt(quantity),
+                price: parseFloat(product.product_reguler_price),
+                image: product.product_image
+            };
+
+            // Retrieve existing cart items from localStorage or initialize an empty array
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Add the new item to the cart
+            cartItems.push(newItem);
+
+            // Store the updated cart items back into localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Optionally, provide feedback to the user
+            alert('Item added to cart!');
+        })
+        .catch(error => console.error('Error fetching product details:', error));
+}
+
+// JavaScript code for fetching product details and updating the UI
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+const imgUrl = 'https://digitalcreativeinternational.com/foodstore/uploads/products/';
+
+fetch(`https://digitalcreativeinternational.com/foodstore/get_product_details/${productId}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    const product = data[0];
+    document.getElementById('product-image').src = product.product_image ? imgUrl + product.product_image : 'placeholder.jpg';
+    document.getElementById('product-title').textContent = product.product_name;
+    document.getElementById('product-price').textContent = "Price: $" + product.product_reguler_price;
+    document.getElementById('product-description').textContent = product.product_short_description;
+    
+    // Get quantity input element
+    const quantityInput = document.getElementById('quantity');
+    
+    // Add event listener to quantity input
+    quantityInput.addEventListener('input', function() {
+      // Get current quantity
+      const quantity = parseInt(quantityInput.value);
+      // Calculate total price based on quantity
+      const totalPrice = quantity * parseFloat(product.product_reguler_price);
+      // Update displayed price
+      document.getElementById('product-price').textContent = "Price: $" + totalPrice.toFixed(2);
+    });
+  })
+  .catch(error => console.error('Error fetching product details:', error));
+</script>
+
+</body>
+</html>

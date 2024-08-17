@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Product Catalog</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+<button id="openNav" class="btn btn-light">☰</button>
+<img src="img/logo.png" alt="Logo" class="logo">
+</div>
+
+<!-- Navigation Flyout -->
+<div class="navigation-flyout">
+<span class="close-button" onclick="closeNav()">×</span>
+<!-- Profile Section -->
+<div class="profile-section">
+<img src="img/profile-picture.jpg" alt="Profile" class="profile-picture">
+<div class="profile-info">
+<div class="profile-name">Vinay Singh</div>
+<div class="profile-email">vinaysingh43@gmail.com</div>
+</div>
+</div>
+
+<a href="profile.html" class="navigation-item">Profile</a>
+<a href="menu-catalog.html" class="navigation-item">Categories</a>
+<a href="contact.html" class="navigation-item">Contact</a>
+<a href="product_details.html" class="navigation-item">Product Details</a>
+<a href="cart.html" class="navigation-item">View Cart</a>
+<a href="checkout.html" class="navigation-item">Checkout</a>
+<a href="login.html" class="navigation-item">Login</a>
+<a href="index.html" class="navigation-item">Register</a>
+<a href="#" class="navigation-item">Log out</a>
+<!-- Add more navigation items as needed -->
+</div>
+
+<!-- Product Catalog -->
+<div class="profile-container">
+  <img src="img/profile-picture.jpg" alt="Profile Picture" class="profile-image">
+  <h2>Vinay Singh</h2>
+  <p>Email: vinaysingh43@gmail.com</p>
+  <p>Phone: +919457790679</p>
+  <p>Address: 123 Main Street, Lucknow, UP , INDIA</p>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<div class="footer">
+<a href="menu-catalog.html" class="footer-icon active"><i class="fas fa-store"></i></a>
+<a href="profile.html" class="footer-icon"><i class="far fa-user"></i> </a>
+<a href="cart.html" class="footer-icon"><i class="fas fa-shopping-basket"></i></a>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+function openNav() {
+document.querySelector('.navigation-flyout').style.left = '0';
+}
+
+function closeNav() {
+document.querySelector('.navigation-flyout').style.left = '-80%';
+}
+
+document.getElementById('openNav').addEventListener('click', openNav);
+
+function logout() {
+    alert('Logout successful!');
+    }
+</script>
+
+</body>
+</html>

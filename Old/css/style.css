@@ -1,0 +1,432 @@
+/*Mobile css*/
+  body {
+            padding: 0;
+            margin: 0;
+            font-family: 'jost', sans-serif;
+        }
+
+        .mobile-header {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .logo {
+            max-width: 100px;
+        }
+
+
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff; /* White container background color */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .navigation-flyout {
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            left: -80%;
+            height: 100%;
+            width: 80%;
+            transition: left 0.3s ease-in-out;
+            overflow-y: auto;
+            padding-top: 60px;
+            z-index: 10;
+        }
+
+        .navigation-item {
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .thank-you-page {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .thank-you-message {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #28a745;
+        }
+
+        .order-id {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        .btn-home {
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 15px;
+            background-color: #28a745;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+		
+		 .profile-picture {
+            max-width: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+ .profile-section {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #555; /* Dark border color */
+        }
+		 .profile-info {
+            margin-left: 10px;
+            color: #fff;
+        }
+
+        .profile-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile-email {
+            font-size: 14px;
+        }
+		
+		/**CHECKOUT**/
+		
+		 .checkout-page {
+            padding: 20px;
+        }
+
+        .checkout-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-control {
+            font-size: 16px;
+        }
+
+        .product-details {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #343a40;
+        }
+
+        .total-section {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .payment-methods {
+            margin-top: 20px;
+        }
+
+        .btn-place-order {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: #28a745;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-place-order:hover {
+            background-color: #218838;
+        }
+		
+		/*****/
+		
+		/**CART PAGE**/
+		 .cart-page {
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6; /* Border color */
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff; /* White background */
+        }
+
+        .product-img {
+            max-width: 80px;
+            height:213px;
+            width:237px;
+            height: auto;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .remove-btn {
+            color: #dc3545; /* Red color for the remove button */
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: auto; /* Pushes the remove button to the right */
+        }
+
+        .total-section {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .btn-checkout {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: #28a745; /* Green button background color */
+            color: #fff; /* Button text color */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+		
+		.product-weight{
+            font-size:14px;
+            color:#999999;
+            text-align:left;
+            }
+         .price{ 
+             font-weight:bold;
+             }   
+		.product-details {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Rounded corners for the image */
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #343a40; /* Dark text color */
+        }
+
+        .product-description {
+            margin-top: 15px;
+            color: #6c757d; /* Medium-dark text color */
+        }
+
+        .quantity-section {
+            margin-top: 20px;
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .btn-add-to-cart {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            background-color: #28a745; /* Green button background color */
+            color: #fff; /* Button text color */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+		
+		/****CATALOG****/
+		
+		 .product-card {
+            margin: 10px;
+            width: 100%;
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: auto;
+        }
+         .btn-pill {
+            border-radius: 50px; /* Adjust the border-radius to control pill shape */
+        }
+        .card-body {
+    flex: 1 1 auto;
+    padding: 0.75rem;
+}
+.card-title {
+    margin-bottom: 0.45rem;
+}
+
+ .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa; /* Light background color */
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            z-index: 1000;
+        }
+
+        .footer-icon {
+            font-size: 24px;
+            color: #28a745; /* Medium-dark text color */
+            text-decoration: none;
+        }
+
+        .active {
+            color: #28a745; /* Blue color for active icon */
+        }
+        
+        .green-background {
+      
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      border-radius:12px;
+    }
+    div#appCarousel {
+    margin-top: 10px;
+}
+
+    /* Hide navigation controls */
+    .carousel-control-prev, .carousel-control-next {
+      display: none;
+    }
+    
+    /**/
+      .profile-container {
+      background-color: #fff;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .logout-btn {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /**/
+     .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            overflow: hidden;
+        }
+
+      .swiper-slide {
+      height: 80px;
+      line-height: 50px;
+      text-align: center;
+    }
+    
+    .swiper-slide img{
+        height: 80px;
+        border-radius:25px;
+        }
+    /**** SEARCH BOX******/
+        .search-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: 8px 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            outline: none;
+        }
+
+.spacer{ margin-bottom:100px;}
+/***************/
+        

@@ -1,0 +1,22 @@
+The Mobile Apps 
+---------------------------------
+ Have Follow Features are working 
+
+1)  Catelories List
+2) Product List
+3) Add to Cart
+4) Remove Cart
+5) Product Details Page
+6) Total Price Calculation
+7) Cart proceed to Checkout page with Total Price
+8) Menu Overly is working fine 
+-----------------------------------------------
+9)  Login Page
+10) Register page
+11) Contact Us page
+12) Profile Page 
+13) Address Update
+14) Email Update 
+15) Mobile No. Update
+16) 
+   

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Cart</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .product-img {
+      max-width: 80px;
+      height: auto;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+
+    .product-details {
+      flex: 1;
+      text-align:left;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align:left;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .remove-btn {
+      color: red;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      color: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <button id="openNav" class="btn btn-light">☰</button>
+    <img src="img/logo.png" alt="Logo" class="logo">
+  </div>
+
+  <!-- Navigation Flyout -->
+  <div class="navigation-flyout">
+    <span class="close-button" onclick="closeNav()">×</span>
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <img src="img/profile-picture.jpg" alt="Profile" class="profile-picture">
+      <div class="profile-info">
+        <div class="profile-name">Vinay Singh</div>
+        <div class="profile-email">vinaysingh43@gmail.com</div>
+      </div>
+    </div>
+    <a href="profile.html" class="navigation-item">Profile</a>
+    <a href="menu-catalog.html" class="navigation-item">Categories</a>
+    <a href="contact.html" class="navigation-item">Contact</a>
+    <a href="product_details.html" class="navigation-item">Product Details</a>
+    <a href="cart.html" class="navigation-item">View Cart</a>
+    <a href="checkout.html" class="navigation-item">Checkout</a>
+    <a href="login.html" class="navigation-item">Login</a>
+    <a href="index.html" class="navigation-item">Register</a>
+    <a href="#" class="navigation-item">Log out</a>
+    <!-- Add more navigation items as needed -->
+  </div>
+
+  <!-- Cart Page -->
+  <div class="container cart-page">
+    <h2>Cart</h2>
+
+    <!-- Cart Items -->
+    <div id="cart-items"></div>
+
+    <!-- Total Section -->
+    <div id="total-section"></div>
+
+    <!-- Checkout Button -->
+    <button class="btn btn-checkout"  onclick="checkout()">Checkout</button>
+  </div>
+
+  <div class="spacer">&nbsp;</div>
+
+  <div class="footer">
+    <a href="menu-catalog.html" class="footer-icon active"><i class="fas fa-store"></i></a>
+    <a href="profile.html" class="footer-icon"><i class="far fa-user"></i> </a>
+    <a href="cart.html" class="footer-icon"><i class="fas fa-shopping-basket"></i></a>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script>
+    function openNav() {
+      document.querySelector('.navigation-flyout').style.left = '0';
+    }
+
+    function closeNav() {
+      document.querySelector('.navigation-flyout').style.left = '-80%';
+    }
+
+    document.getElementById('openNav').addEventListener('click', openNav);
+
+    const imgUrl= 'https://digitalcreativeinternational.com/foodstore/uploads/products/';
+
+    function returnCheckout() {
+      window.location.href = 'checkout.html';
+    }
+
+
+    // Checkout Function 
+     function checkout() {
+    
+    // Get cart items from localStorage
+    const cartItems = getCartItems();
+ 
+    // Perform validation
+    if (cartItems.length === 0) {
+      alert('Your cart is empty. Add items before checking out.');
+      return;
+    }
+
+    // Calculate total price
+    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+    // Redirect to the checkout page with total price
+    window.location.href = `checkout.html?total=${totalPrice.toFixed(2)}`;
+  }
+
+///Get Cart All Items 
+ function getCartItems() {
+     return JSON.parse(localStorage.getItem('cartItems')) || [];
+  }
+
+    // Function to remove item from cart
+    function removeItem(productId) {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        let updatedCartItems = [];
+
+        for (let i = 0; i < cartItems.length; i++) {
+            if (cartItems[i].productId !== productId) {
+                updatedCartItems.push(cartItems[i]);
+            }
+        }
+        // Update the cart items in localStorage
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        // Refresh cart display
+        displayCartItems();
+    }
+
+    // Add event listener to the cart items container for remove buttons
+    document.getElementById('cart-items').addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-btn')) {
+            // Get the productId from the parent element's dataset
+            const productId = event.target.parentElement.dataset.productId;
+            // Call removeItem function with the productId
+            removeItem(productId);
+            // Remove the corresponding cart item element from the DOM
+            event.target.parentElement.remove();
+        }
+    });
+
+    // Function to display cart items
+    function displayCartItems() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        let totalPrice = 0;
+
+        // Clear existing cart items
+        cartItemsContainer.innerHTML = '';
+
+        // Generate HTML for each cart item
+        cartItems.forEach(item => {
+            const itemPrice = item.price * item.quantity;
+            const cartItemHTML = `
+                <div class="cart-item" data-product-id="${item.productId}">
+                    <img src="${imgUrl+item.image}" alt="${item.productName}" class="product-img">
+                    <div class="product-details">
+                        <div class="product-name">${item.productName}</div>
+                        <div>Quantity: ${item.quantity}</div>
+                        <div>Price: $${itemPrice.toFixed(2)}</div>
+                    </div>
+                    <button class="remove-btn" onclick="removeItem('${item.productId}')">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div> `;
+            cartItemsContainer.innerHTML += cartItemHTML;
+            totalPrice += itemPrice;
+        });
+
+        // Display total price
+        const totalSection = document.getElementById('total-section');
+        totalSection.innerHTML = `Total: $${totalPrice.toFixed(2)}`;
+    }
+
+    // Display cart items when the page loads
+    displayCartItems();
+
+  </script>
+
+</body>
+</html>

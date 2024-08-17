@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #28a745; /* Green background color */
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <!-- Your logo goes here -->
+    <img src="img/logo.png" alt="Logo" class="login-logo">
+
+    <!-- Login form goes here -->
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-sm btn-success btn-pill btn-rounded-green">Login</button>
+        
+        <button type="button" class="btn btn-sm btn-success btn-pill btn-rounded-green" onclick="returnCatalog()">Catalog View </button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    function returnCatalog() {
+window.location.href = 'menu-catalog.html';
+}
+</script>
+</body>
+</html>
